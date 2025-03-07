@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 300px;
+      padding: 10px;
+      font-family: sans-serif;
+    }
+    button {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 8px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    #copyButton {
+      background-color: #2196F3;
+    }
+    #copyButton:hover {
+      background-color: #0b7dda;
+    }
+    #status {
+      margin-top: 10px;
+      color: #333;
+    }
+    #templateContent {
+      margin-top: 10px;
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      padding: 8px;
+      background-color: #f9f9f9;
+      white-space: pre-wrap;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h2>解説用のプロンプトを生成</h2>
+  <button id="generateTemplate">プロンプト生成</button>
+  <button id="copyButton" disabled hidden>クリップボードにコピーする</button>
+  <div id="status"></div>
+  <div id="templateContent"></div>
+  <script src="popup.js"></script>
+</body>
+</html>

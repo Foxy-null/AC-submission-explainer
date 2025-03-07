@@ -1,0 +1,45 @@
+{
+	"manifest_version": 3,
+	"name": "AtCoder解説プロンプト生成",
+	"version": "1.0",
+	"description": "AtCoderの提出ページからコードと問題文を取得し、解説用のプロンプトを生成できます",
+	"permissions": [
+		"activeTab",
+		"scripting",
+		"clipboardWrite"
+	],
+	"icons": {
+		"16": "images/icon16.png",
+		"48": "images/icon48.png",
+		"128": "images/icon128.png"
+	},
+	"action": {
+		"default_popup": "popup.html",
+		"default_icon": {
+			"16": "images/icon16.png",
+			"48": "images/icon48.png",
+			"128": "images/icon128.png"
+		}
+	},
+	"content_scripts": [
+		{
+			"matches": [
+				"https://atcoder.jp/contests/*/submissions/*"
+			],
+			"js": [
+				"content.js",
+				"turndown.min.js"
+			]
+		}
+	],
+	"web_accessible_resources": [
+		{
+			"resources": [
+				"turndown.min.js"
+			],
+			"matches": [
+				"https://atcoder.jp/*"
+			]
+		}
+	]
+}
