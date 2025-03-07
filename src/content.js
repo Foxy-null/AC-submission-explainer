@@ -196,7 +196,7 @@ async function generateTemplate() {
 		console.log('問題文を取得中...');
 		const problemStatement = await getProblemStatement(problemUrl);
 
-		console.log('テンプレートを生成中...');
+		console.log('プロンプトを生成中...');
 		const template = `${contestName}の${problemAlphabet}問題(${problemName})の問題文をもとに、一緒に与えられる提出コードを分かりやすく解説してください。
 
 # コード
