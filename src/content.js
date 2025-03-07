@@ -204,6 +204,7 @@ async function generateTemplate() {
 ${code}
 \`\`\`
 
+# 問題文
 ${problemStatement}`;
 
 		console.log('クリップボードにコピー中...');
