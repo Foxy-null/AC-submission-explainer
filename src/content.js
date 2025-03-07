@@ -53,7 +53,7 @@ function getContestNameFromUrl(url) {
 
 function getContestAndProblemName() {
 	const thElements = Array.from(document.querySelectorAll('tr th'));
-	const problemTh = thElements.find(th => th.textContent.includes('問題'));
+	const problemTh = thElements.find(th => th.textContent.includes('問題') || th.textContent.includes('Task'));
 	if (!problemTh) {
 		throw new Error('問題リンクが見つかりません');
 	}
