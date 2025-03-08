@@ -1,8 +1,8 @@
 {
 	"manifest_version": 3,
-	"name": "AtCoder解説プロンプト生成",
+	"name": "AC submission explainer",
 	"version": "1.0",
-	"description": "AtCoderの提出ページからコードと問題文を取得し、解説用のプロンプトを生成できます",
+	"description": "提出ページから該当コードと問題文を取得し、解説用のプロンプトを生成してくれます",
 	"permissions": [
 		"activeTab",
 		"scripting",
