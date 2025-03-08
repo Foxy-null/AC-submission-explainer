@@ -2,7 +2,7 @@
 	"manifest_version": 3,
 	"name": "AC submission explainer",
 	"version": "1.0",
-	"description": "提出ページから該当コードと問題文を取得し、解説用のプロンプトを生成してくれます",
+	"description": "提出ページのコードと問題文をもとに解説してもらうプロンプトを生成します",
 	"permissions": [
 		"activeTab",
 		"scripting",
