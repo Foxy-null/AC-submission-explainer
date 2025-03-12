@@ -111,65 +111,27 @@ async function getProblemStatement(problemUrl) {
 		const parser = new DOMParser();
 		const doc = parser.parseFromString(html, 'text/html');
 
-		const allSections = Array.from(doc.querySelectorAll('.part'));
-		const problemSection = allSections.find(section => {
-			const h3 = section.querySelector('h3');
-			return h3 && h3.textContent.includes('問題文');
-		});
+		const allSections = Array.from(doc.querySelectorAll('.lang-ja'));
 
-		const endSection = allSections.find(section => {
-			const h3 = section.querySelector('h3');
-			return h3 && h3.textContent.includes('出力例 3');
-		});
-
-		if (!problemSection) {
+		if (!allSections || allSections.length === 0) {
 			throw new Error('問題文セクションが見つかりません');
 		}
 
-		const allH3s = Array.from(problemSection.querySelectorAll('h3'));
-		const startElement = allH3s.find(h3 => h3.textContent.includes('問題文'));
+		console.log(`${allSections.length}個のセクションが見つかりました`);
 
-		if (!startElement) {
-			throw new Error('問題文の開始位置が見つかりません');
-		}
+		const container = document.createElement('div');
 
-		const allH3sInDoc = Array.from(doc.querySelectorAll('h3'));
-		let endElement = allH3sInDoc.find(h3 =>
-			h3.textContent.includes('aaaa') || h3.textContent.includes('出力例 3')
-		);
-		console.log(endElement);
-
-		if (!endElement) {
-			console.log('Problem Statementや出力例3が見つからないため、問題文全体を取得します');
-
-			const content = document.createElement('div');
-			content.appendChild(problemSection.cloneNode(true));
-
-			const turndownService = new TurndownService({
-				headingStyle: 'atx',
-				codeBlockStyle: 'fenced'
-			});
-
-			return turndownService.turndown(content.innerHTML);
-		}
-
-		console.log('区切り要素が見つかりました:', endElement.textContent);
-
-		const range = document.createRange();
-		range.setStartAfter(startElement);
-		range.setEndBefore(endElement);
-
-		const fragment = range.cloneContents();
-		const content = document.createElement('div');
-		content.appendChild(fragment);
-		if (endElement.textContent == ('出力例 3')) { content.appendChild(endSection.cloneNode(true)); }
+		allSections.forEach(section => {
+			container.appendChild(section.cloneNode(true));
+		});
 
 		const turndownService = new TurndownService({
 			headingStyle: 'atx',
 			codeBlockStyle: 'fenced'
 		});
 
-		return turndownService.turndown(content.innerHTML);
+		return turndownService.turndown(container.innerHTML);
+
 	} catch (error) {
 		throw new Error(`問題文の取得に失敗しました: ${error.message}`);
 	}
@@ -199,12 +161,11 @@ async function generateTemplate() {
 		console.log('プロンプトを生成中...');
 		const template = `${contestName}の${problemAlphabet}問題(${problemName})の問題文をもとに、一緒に与えられる提出コードを分かりやすく解説してください。
 
-# コード
+### 解説してほしいコード
 \`\`\`
 ${code}
 \`\`\`
 
-# 問題文
 ${problemStatement}`;
 
 		console.log('クリップボードにコピー中...');
