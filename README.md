@@ -1,7 +1,7 @@
 # インストール方法
 1. Chrome拡張機能の設定で、画面右上から「デベロッパーモード」を有効化
-2. [最新のリリース](https://github.com/Foxy-null/AtCoder-submission-comprehension/releases/latest)から`.crx`ファイルをダウンロード
-3. ダウンロードした`.crx`ファイルを拡張機能の設定にドラッグアンドドロップする
+2. このリポジトリをクローン
+3. `chrome://extensions`で、「パッケージ化されていない拡張機能を読み込む」（Load unpacked）から`src`フォルダを指定して読み込む
 
 # 使い方
 1. 解説してほしい提出ページを開いて、拡張機能のアイコンをクリックする
