@@ -1,4 +1,5 @@
-# インストール方法
+# [Chromeストアの公開ページ](https://chromewebstore.google.com/detail/ac-submission-explainer/ccjfilfkohnckoaobmbhbdfmmaeibhik)
+# 手動でインストールする方法
 1. Chrome拡張機能の設定で、画面右上から「デベロッパーモード」を有効化
 2. このリポジトリをクローン
 3. `chrome://extensions`で、「パッケージ化されていない拡張機能を読み込む」（Load unpacked）から`src`フォルダを指定して読み込む
