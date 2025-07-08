@@ -159,7 +159,7 @@ async function generateTemplate() {
 		const problemStatement = await getProblemStatement(problemUrl);
 
 		console.log('プロンプトを生成中...');
-		const template = `${contestName}の${problemAlphabet}問題(${problemName})の問題文をもとに、一緒に与えられる提出コードを分かりやすく解説してください。
+		const template = `${contestName}の${problemAlphabet}問題(${problemName})の問題文を、一緒に与えられる提出コードをもとに分かりやすく解説してください。
 
 ### 解説してほしいコード
 \`\`\`
